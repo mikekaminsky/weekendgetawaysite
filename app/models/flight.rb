@@ -3,25 +3,35 @@ class Flight < ActiveRecord::Base
   belongs_to :trip
   has_many :legs
 
-  def outbound_duration
-    durations = legs.group('slice').maximum(:slice_duration)
-    durations[1]
-  end
 
-  def return_duration
-    durations = legs.group('slice').maximum(:slice_duration)
-    durations[2]
-  end
+  def duration_info
+   durations = legs.group('slice').maximum(:slice_duration)
+   counts = legs.group('slice').count
+   { outbound_duration: durations[1],
+       return_duration: durations[2],
+         outbound_legs: counts[1],
+           return_legs: counts[2] }
+ end
 
-  def outbound_legs
-    numlegs = legs.group('slice').count
-    numlegs[1]
-  end
+  #def outbound_duration
+    #durations = legs.group('slice').maximum(:slice_duration)
+    #durations[1]
+  #end
 
-  def return_legs
-    numlegs = legs.group('slice').count
-    numlegs[2]
-  end
+  #def return_duration
+    #durations = legs.group('slice').maximum(:slice_duration)
+    #durations[2]
+  #end
+
+  #def outbound_legs
+    #numlegs = legs.group('slice').count
+    #numlegs[1]
+  #end
+
+  #def return_legs
+    #numlegs = legs.group('slice').count
+    #numlegs[2]
+  #end
 
 
 

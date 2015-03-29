@@ -22,10 +22,10 @@
       <td><%= flight.trip.departure_date %></td>
       <td><%= flight.trip.return_date %></td>
       <td><%= flight.price %></td>
-      <td><%= flight.outbound_duration %></td>
-      <td><%= flight.return_duration %></td>
-      <td><%= flight.outbound_legs %></td>
-      <td><%= flight.return_legs %></td>
+      <td><%= flight.duration_info[:outbound_duration] %></td>
+      <td><%= flight.duration_info[:return_duration] %></td>
+      <td><%= flight.duration_info[:outbound_legs] %></td>
+      <td><%= flight.duration_info[:return_legs] %></td>
     </tr>
   <% end %>
   </tbody>
