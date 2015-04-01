@@ -1,3 +1,3 @@
 class Trip < ActiveRecord::Base
-  has_many :flights
+  has_many :journeys
 end
