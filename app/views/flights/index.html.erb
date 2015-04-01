@@ -17,13 +17,11 @@
   <tbody>
   <% @flights.each do |journey| %>
     <tr>
-      <td><%= journey.trip.origin_city %></td>
-      <td><%= journey.trip.destination_city %></td>
+      <td><%= journey.trip.origin %></td>
+      <td><%= journey.trip.destination %></td>
       <td><%= journey.trip.departure_date %></td>
       <td><%= journey.trip.return_date %></td>
       <td><%= journey.price %></td>
-      <td><%= journey.duration_info[:outbound_legs] %></td>
-      <td><%= journey.duration_info[:return_legs] %></td>
     </tr>
   <% end %>
   </tbody>
