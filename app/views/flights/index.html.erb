@@ -7,6 +7,7 @@
       <th>Destination</th>
       <th>Departure</th>
       <th>Return</th>
+      <th>Airline</th>
       <th>Price</th>
       <th>Outbound Duration</th>
       <th>Return Duration</th>
@@ -21,7 +22,12 @@
       <td><%= journey.trip.destination %></td>
       <td><%= journey.trip.departure_date %></td>
       <td><%= journey.trip.return_date %></td>
+      <td><%= journey.flights.select(&:outgoing?).map(&:legs).flatten.first.carrier%></td>
       <td><%= journey.price %></td>
+      <td><%= journey.flights.select(&:outgoing?).first.duration %></td>
+      <td><%= journey.flights.reject(&:outgoing?).first.duration %></td>
+      <td><%= journey.flights.select(&:outgoing?).map(&:legs).flatten.size %></td>
+      <td><%= journey.flights.reject(&:outgoing?).map(&:legs).flatten.size %></td>
     </tr>
   <% end %>
   </tbody>
