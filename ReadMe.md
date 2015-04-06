@@ -5,3 +5,7 @@
 * [ ] Add [search by column](https://datatables.net/examples/api/multi_filter.html)
 * [ ] Add [multi-column ordering](https://datatables.net/examples/basic_init/multi_col_sort.html)
 * [ ] STYLING!!!
+
+###Depolying:
+`$ RAILS_ENV=production bundle exec rake assets:precompile`
+`$ git push heroku master`
