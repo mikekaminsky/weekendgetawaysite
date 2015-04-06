@@ -1,7 +1,9 @@
 jQuery(function() {
   table = $('#flights_table').dataTable({
         "paging":   false,
-        "order": [[ 5, "asc" ]]
+        "order": [[ 5, "asc" ]],
+        "bAutodWidth": false,
+        "aoColumns": [{ "sWidth": "10%" }, { "sWidth": "10%" }, { "sWidth": "20%" }, { "sWidth": "15%" }, { "sWidth": "5%" }, { "sWidth": "5%" }, { "sWidth": "10%" }, { "sWidth": "5%" }, { "sWidth": "5%"}, {"sWidth": "5%"}]
     });
 
   $('#flights_table').delegate('tbody > tr', 'click', function ()

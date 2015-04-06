@@ -1,36 +1,38 @@
-<h1>Listing Flights</h1>
- 
-<table id="flights_table", class = "display">
-  <thead>
-    <tr>
-      <th>Origin</th>
-      <th>Destination</th>
-      <th>Departure</th>
-      <th>Return</th>
-      <th>Airline</th>
-      <th>Price</th>
-      <th>Outbound Duration</th>
-      <th>Return Duration</th>
-      <th>Outbound Legs</th>
-      <th>Return Legs</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @flights.each do |journey| %>
-    <tr>
-      <td><%= journey.trip.origin %></td>
-      <td><%= journey.trip.destination %></td>
-      <td><%= journey.trip.departure_date %></td>
-      <td><%= journey.trip.return_date %></td>
-      <td><%= journey.flights.select(&:outgoing?).map(&:legs).flatten.first.carrier%></td>
-      <td><%= journey.price %></td>
-      <td><%= journey.flights.select(&:outgoing?).first.duration %></td>
-      <td><%= journey.flights.reject(&:outgoing?).first.duration %></td>
-      <td><%= journey.flights.select(&:outgoing?).map(&:legs).flatten.size %></td>
-      <td><%= journey.flights.reject(&:outgoing?).map(&:legs).flatten.size %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
- 
+<div class="header">
+  <h1>Weekend Getaways</h1>
+</div> 
+<div class="main-content">
+  <table id="flights_table", class = "display">
+    <thead>
+      <tr>
+        <th>Origin</th>
+        <th>Destination</th>
+        <th>Departure Date</th>
+        <th>Return Date</th>
+        <th>Airline</th>
+        <th>Price</th>
+        <th>Outbound Duration</th>
+        <th>Return Duration</th>
+        <th>Outbound Legs</th>
+        <th>Return Legs</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @flights.each do |journey| %>
+      <tr>
+        <td><%= journey.trip.origin %></td>
+        <td><%= journey.trip.destination %></td>
+        <td><%= journey.trip.departure_date %></td>
+        <td><%= journey.trip.return_date %></td>
+        <td><%= journey.flights.select(&:outgoing?).map(&:legs).flatten.first.carrier%></td>
+        <td><%= number_to_currency(journey.price.round(0), :precision => 0) %></td>
+        <td><%= journey.flights.select(&:outgoing?).first.duration %></td>
+        <td><%= journey.flights.reject(&:outgoing?).first.duration %></td>
+        <td><%= journey.flights.select(&:outgoing?).map(&:legs).flatten.size %></td>
+        <td><%= journey.flights.reject(&:outgoing?).map(&:legs).flatten.size %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div> 
 <br>
